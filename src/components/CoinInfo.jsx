@@ -6,6 +6,7 @@ import { numberWithCommas } from './Carousel';
 import HTMLReactParser from "html-react-parser";
 import { CryptoState } from '../CryptoContext';
 
+
 export const CoinInfo = () => {
     const [coin, setcoin] = useState([])
     const [loading, setLoading] = useState(false);
@@ -24,16 +25,17 @@ export const CoinInfo = () => {
     useEffect(() => {
         fetchDetails();
     }, [])
-      
+
+    
   return (
-    <main>
+    <main >
       <section className="flex justify-around flex-wrap py-12">
-        <div className="max-w-sm py-12">
+        <div className="max-w-sm py-24">
         {coin.image && coin.image.large && (
-        <img src={coin.image.large} alt={coin.name} />
+        <img className="w-32 h-32 rounded-full object-cover border-4 border-white shadow-md " src={coin.image.large} alt={coin.name} />
       )}
         </div>
-        <div className="max-w-2xl text-gray-700 text-lg dark:text-white">
+        <div className="max-w-2xl text-gray-700 text-lg dark:text-white py-10">
           <h1 className="text-4xl font-bold my-3 text-center lg:text-left">{coin.name}</h1>
           
           {coin.description && coin.description.en && (<p className="my-4">{HTMLReactParser(coin?.description.en.split(". ")[0])}.</p>)}
