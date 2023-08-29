@@ -9,6 +9,7 @@ const Crypto = createContext();
 const CryptoContext = ({children}) => {
   const [currency, setCurrency] = useState("INR");
   const [symbol, setSymbol] = useState("₹")
+  const [value, setValue] = useState("")
 
   useEffect(() => {
     if(currency === "INR"){
@@ -19,7 +20,7 @@ const CryptoContext = ({children}) => {
     }
   }, [currency])
   return (
-    <Crypto.Provider value = {{currency, symbol, setCurrency}}>
+    <Crypto.Provider value = {{currency, symbol, setCurrency, value, setValue}}>
         {children}
     </Crypto.Provider>
   )
